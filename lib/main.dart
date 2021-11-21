@@ -52,15 +52,21 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: SafeArea(
-        // 4
         child: ListView.builder(
-          // 5
           itemCount: Recipe.samples.length,
-          // 6
           itemBuilder: (BuildContext context, int index) {
-            // 7
-            // TODO: Add GestureDetector
-            return buildRecipeCard(Recipe.samples[index]);
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    // TODO: Replace return with return RecipeDetail()
+                    return const Text('Detail page');
+                  }),
+                );
+              },
+              child: buildRecipeCard(Recipe.samples[index]),
+            );
           },
         ),
       ),
